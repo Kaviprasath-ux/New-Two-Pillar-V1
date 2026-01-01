@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { useUser } from '@/contexts/user-context';
+import { useAuth } from '@/contexts/auth-context';
 import { getNavigationForRole } from '@/lib/navigation';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -11,8 +11,11 @@ import { Landmark } from 'lucide-react';
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { currentUser } = useUser();
-  const navigation = getNavigationForRole(currentUser.role);
+  const { user } = useAuth();
+
+  if (!user) return null;
+
+  const navigation = getNavigationForRole(user.role);
 
   return (
     <div className="flex h-full w-64 flex-col border-r border-slate-700 bg-slate-900">

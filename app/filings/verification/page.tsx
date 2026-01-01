@@ -9,6 +9,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCurrency } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { filings } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function VerificationQueue() {
   // Filter filings that need verification (have warnings or errors)
@@ -17,7 +18,8 @@ export default function VerificationQueue() {
   );
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -158,6 +160,7 @@ export default function VerificationQueue() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

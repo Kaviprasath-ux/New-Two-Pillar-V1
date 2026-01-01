@@ -10,6 +10,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatCurrency } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { auditCalculationTrace, auditCases } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function AuditWorkbench() {
   const [expandedSteps, setExpandedSteps] = useState<number[]>([1]);
@@ -30,7 +31,8 @@ export default function AuditWorkbench() {
   };
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
@@ -278,6 +280,7 @@ export default function AuditWorkbench() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

@@ -12,6 +12,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCompactNumber } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { mneGroups, filings, auditCases } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -25,20 +26,23 @@ export default function MNEDetail({ params }: PageProps) {
 
   if (!mne) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-white mb-2">MNE Not Found</h2>
-          <p className="text-slate-400 mb-4">The MNE you're looking for doesn't exist.</p>
-          <Link href="/mne">
-            <Button>Back to MNE Registry</Button>
-          </Link>
+      <AppShell>
+        <div className="flex items-center justify-center h-96">
+          <div className="text-center">
+            <h2 className="text-xl font-semibold text-white mb-2">MNE Not Found</h2>
+            <p className="text-slate-400 mb-4">The MNE you're looking for doesn't exist.</p>
+            <Link href="/mne">
+              <Button>Back to MNE Registry</Button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </AppShell>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
@@ -315,6 +319,7 @@ export default function MNEDetail({ params }: PageProps) {
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
+      </div>
+    </AppShell>
   );
 }

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCurrency } from '@/lib/utils';
 import { assessments } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function Assessments() {
   const statusCounts = {
@@ -17,7 +18,8 @@ export default function Assessments() {
   };
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -121,6 +123,7 @@ export default function Assessments() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

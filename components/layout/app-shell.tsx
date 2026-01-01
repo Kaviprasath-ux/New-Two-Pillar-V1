@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import { Sidebar } from './sidebar';
 import { Header } from './header';
-import { UserProvider } from '@/contexts/user-context';
+import { ProtectedRoute } from '@/components/auth/protected-route';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 interface AppShellProps {
@@ -12,7 +12,7 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <UserProvider>
+    <ProtectedRoute>
       <TooltipProvider>
         <div className="flex h-screen bg-slate-950 text-slate-100">
           <Sidebar />
@@ -24,6 +24,6 @@ export function AppShell({ children }: AppShellProps) {
           </div>
         </div>
       </TooltipProvider>
-    </UserProvider>
+    </ProtectedRoute>
   );
 }

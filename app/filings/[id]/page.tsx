@@ -11,6 +11,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCurrency, formatPercentage } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { filings, validationResults, mneGroups } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -23,20 +24,23 @@ export default function FilingDetail({ params }: PageProps) {
 
   if (!filing) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-white mb-2">Filing Not Found</h2>
-          <p className="text-slate-400 mb-4">The filing you're looking for doesn't exist.</p>
-          <Link href="/filings">
-            <Button>Back to Filing Registry</Button>
-          </Link>
+      <AppShell>
+        <div className="flex items-center justify-center h-96">
+          <div className="text-center">
+            <h2 className="text-xl font-semibold text-white mb-2">Filing Not Found</h2>
+            <p className="text-slate-400 mb-4">The filing you're looking for doesn't exist.</p>
+            <Link href="/filings">
+              <Button>Back to Filing Registry</Button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </AppShell>
     );
   }
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
@@ -313,6 +317,7 @@ export default function FilingDetail({ params }: PageProps) {
           </Card>
         </div>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

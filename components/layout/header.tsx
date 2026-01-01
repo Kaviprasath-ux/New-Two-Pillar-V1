@@ -1,17 +1,8 @@
 "use client"
 
-import { Bell, ChevronDown, LogOut, Settings, User } from 'lucide-react';
-import { useUser, getRoleDisplayName } from '@/contexts/user-context';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Bell } from 'lucide-react';
+import { useAuth } from '@/contexts/auth-context';
 import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import {
   Select,
   SelectContent,
@@ -19,10 +10,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Badge } from '@/components/ui/badge';
+import { UserMenu } from '@/components/layout/user-menu';
 
 export function Header() {
-  const { currentUser, allUsers, setCurrentUser } = useUser();
+  const { user } = useAuth();
+
+  if (!user) return null;
 
   return (
     <header className="flex h-16 items-center justify-between border-b border-slate-700 bg-slate-900 px-6">
@@ -50,75 +43,8 @@ export function Header() {
           </span>
         </Button>
 
-        {/* Role Switcher (for demo) */}
-        <Select
-          value={currentUser.id}
-          onValueChange={(value) => {
-            const user = allUsers.find(u => u.id === value);
-            if (user) setCurrentUser(user);
-          }}
-        >
-          <SelectTrigger className="w-48 bg-slate-800 border-slate-600">
-            <SelectValue>
-              <div className="flex items-center gap-2">
-                <Badge variant="outline" className="text-xs">
-                  {getRoleDisplayName(currentUser.role)}
-                </Badge>
-              </div>
-            </SelectValue>
-          </SelectTrigger>
-          <SelectContent>
-            {allUsers.map((user) => (
-              <SelectItem key={user.id} value={user.id}>
-                <div className="flex flex-col">
-                  <span className="font-medium">{user.name}</span>
-                  <span className="text-xs text-slate-400">
-                    {getRoleDisplayName(user.role)}
-                  </span>
-                </div>
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
         {/* User Menu */}
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2">
-              <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-blue-600 text-white text-sm">
-                  {currentUser.avatar}
-                </AvatarFallback>
-              </Avatar>
-              <div className="flex flex-col items-start">
-                <span className="text-sm font-medium text-white">
-                  {currentUser.name}
-                </span>
-                <span className="text-xs text-slate-400">
-                  {currentUser.department}
-                </span>
-              </div>
-              <ChevronDown className="h-4 w-4 text-slate-400" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <User className="mr-2 h-4 w-4" />
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-red-400">
-              <LogOut className="mr-2 h-4 w-4" />
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <UserMenu />
       </div>
     </header>
   );

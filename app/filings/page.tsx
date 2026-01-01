@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/select';
 import { FilingTable } from '@/components/filings/filing-table';
 import { filings } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function FilingRegistry() {
   const [statusFilter, setStatusFilter] = useState<string>('all');
@@ -31,7 +32,8 @@ export default function FilingRegistry() {
   }, {} as Record<string, number>);
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -131,6 +133,7 @@ export default function FilingRegistry() {
           <Button variant="outline" size="sm" disabled>Next</Button>
         </div>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

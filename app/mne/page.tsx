@@ -25,6 +25,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatCompactNumber } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { mneGroups, riskDistribution, sectorBreakdown } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function MNERegistry() {
   const [riskFilter, setRiskFilter] = useState<string>('all');
@@ -39,7 +40,8 @@ export default function MNERegistry() {
   const sectors = Array.from(new Set(mneGroups.map(m => m.sector)));
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -254,6 +256,7 @@ export default function MNERegistry() {
           <Button variant="outline" size="sm" disabled>Next</Button>
         </div>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

@@ -4,10 +4,12 @@ import { Settings, Bell, Shield, Database, Globe } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center gap-4">
         <div className="p-3 rounded-lg bg-slate-600/50">
@@ -128,6 +130,7 @@ export default function SettingsPage() {
           </CardContent>
         </Card>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

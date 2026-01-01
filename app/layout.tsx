@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppShell } from "@/components/layout/app-shell";
+import { AuthProvider } from "@/contexts/auth-context";
 
 export const metadata: Metadata = {
   title: "DMTT Administration Portal | Tax Authority",
@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className="font-sans antialiased">
-        <AppShell>
+        <AuthProvider>
           {children}
-        </AppShell>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -12,6 +12,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCurrency } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { auditCases, filings, mneGroups } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -25,15 +26,17 @@ export default function CaseDetail({ params }: PageProps) {
 
   if (!caseItem) {
     return (
-      <div className="flex items-center justify-center h-96">
-        <div className="text-center">
-          <h2 className="text-xl font-semibold text-white mb-2">Case Not Found</h2>
-          <p className="text-slate-400 mb-4">The case you're looking for doesn't exist.</p>
-          <Link href="/audit/cases">
-            <Button>Back to Case Management</Button>
-          </Link>
+      <AppShell>
+        <div className="flex items-center justify-center h-96">
+          <div className="text-center">
+            <h2 className="text-xl font-semibold text-white mb-2">Case Not Found</h2>
+            <p className="text-slate-400 mb-4">The case you're looking for doesn't exist.</p>
+            <Link href="/audit/cases">
+              <Button>Back to Case Management</Button>
+            </Link>
+          </div>
         </div>
-      </div>
+      </AppShell>
     );
   }
 
@@ -47,7 +50,8 @@ export default function CaseDetail({ params }: PageProps) {
   const priority = priorityConfig[caseItem.priority];
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-4">
@@ -315,6 +319,7 @@ export default function CaseDetail({ params }: PageProps) {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </AppShell>
   );
 }

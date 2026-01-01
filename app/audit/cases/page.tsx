@@ -17,6 +17,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatDate, formatCurrency } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { auditCases, demoUsers } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 const priorityConfig = {
   low: { color: 'text-slate-400', bg: 'bg-slate-500' },
@@ -42,7 +43,8 @@ export default function CaseManagement() {
   };
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -229,6 +231,7 @@ export default function CaseManagement() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

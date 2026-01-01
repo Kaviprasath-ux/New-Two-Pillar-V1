@@ -4,10 +4,12 @@ import { DollarSign, TrendingUp, Clock, AlertTriangle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { globalStats, assessments } from '@/data/mock-data';
 import { formatCurrency, formatCompactNumber } from '@/lib/utils';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function Revenue() {
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center gap-4">
         <div className="p-3 rounded-lg bg-green-500/10">
@@ -97,6 +99,7 @@ export default function Revenue() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

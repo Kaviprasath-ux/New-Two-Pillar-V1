@@ -8,6 +8,7 @@ import { StatusBadge } from '@/components/shared/status-badge';
 import { formatCompactNumber } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { mneGroups } from '@/data/mock-data';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function RiskProfiles() {
   // Sort MNEs by risk score (highest first)
@@ -15,7 +16,8 @@ export default function RiskProfiles() {
   const highRiskMNEs = sortedMNEs.filter(m => m.riskScore === 'critical' || m.riskScore === 'high');
 
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -202,6 +204,7 @@ export default function RiskProfiles() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

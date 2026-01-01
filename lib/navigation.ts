@@ -19,7 +19,7 @@ import {
   History,
   type LucideIcon
 } from 'lucide-react';
-import type { UserRole } from '@/types';
+import type { UserRole } from '@/types/auth';
 
 export interface NavItem {
   name: string;

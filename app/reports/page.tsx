@@ -4,6 +4,7 @@ import { BarChart3, Download, Calendar, FileText } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { AppShell } from '@/components/layout/app-shell';
 
 const reports = [
   { name: 'Monthly Statistics Report', type: 'Monthly', lastGenerated: 'Oct 1, 2024', format: 'PDF' },
@@ -15,7 +16,8 @@ const reports = [
 
 export default function Reports() {
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -92,6 +94,7 @@ export default function Reports() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }

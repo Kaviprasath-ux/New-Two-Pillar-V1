@@ -6,10 +6,12 @@ import { Button } from '@/components/ui/button';
 import { globalStats, monthlyRevenueData, filingStatusDistribution, sectorBreakdown, riskDistribution } from '@/data/mock-data';
 import { formatCompactNumber } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { AppShell } from '@/components/layout/app-shell';
 
 export default function Analytics() {
   return (
-    <div className="space-y-6">
+    <AppShell>
+      <div className="space-y-6">
       {/* Page Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
@@ -240,6 +242,7 @@ export default function Analytics() {
           </div>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </AppShell>
   );
 }
